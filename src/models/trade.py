@@ -2,8 +2,8 @@ import random
 import numpy as np
 import tensorflow as tf
 from collections import deque
-from tensorflow import keras
 from tensorflow.keras import layers
+from tensorflow.keras import models
 
 class Trader:
     def __init__(self, state_size, action_space=3, model_name="AITrader"):
@@ -35,13 +35,13 @@ class Trader:
         Retorna:
         - tf.keras.Model: O modelo de rede neural compilado.
         """
-        model = tf.keras.models.Sequential()
+        model = models.Sequential()
         model.add(layers.Dense(units=32, activation='relu', input_dim=self.state_size))
         model.add(layers.Dense(units=64, activation='relu'))
         model.add(layers.Dense(units=128, activation='relu'))
         model.add(layers.Dense(units=self.action_space, activation='linear'))
 
-        model.compile(loss='mse', optimizer=keras.optimizers.Adam(learning_rate=0.001))
+        model.compile(loss='mse', optimizer=tf.keras.optimizers.Adam(learning_rate=0.001))
         return model
 
     def trade(self, state):
