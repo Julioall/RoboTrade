@@ -1,10 +1,9 @@
-from asyncio import constants
-from datetime import time
 import os
+import time
 import tensorflow as tf
 import tqdm
 from constants import FINAL_DATE, INITIAL_DATE, STOCK_NAME
-from helpers.tools import dataset_loader, get_real_time_data, get_real_time_data_yfinance, load_memory, save_memory, state_creator, stock_price_format
+from helpers.tools import dataset_loader, get_real_time_data_yfinance, load_memory, save_memory, state_creator, stock_price_format
 from models.trade import Trader
 
 # Carregando o conjunto de dados com preços históricos da ação
@@ -164,6 +163,4 @@ def monitorar_mercado_em_tempo_real(stock_name, window_size, update_interval=60)
         except Exception as e:
             print(f"Erro ao monitorar o mercado: {e}")
 
-# Chamada da função para monitorar o mercado em tempo real
-monitorar_mercado_em_tempo_real(STOCK_NAME, window_size)
-
+treiner_agent()
